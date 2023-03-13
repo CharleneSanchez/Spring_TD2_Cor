@@ -4,21 +4,21 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.inti.SpringTest.model.Produit;
+import com.inti.SpringTest.model.Magasin;
 import com.inti.SpringTest.util.FonctionnalitesUtiles;
 
 @Service
-public class ProduitServiceImpl implements IProduitService {
-
+public class MagasinServiceImpl implements IMagasinService {
+	
 	@Override
-	public List<Produit> getProduits() {
-		List<Produit> listeProduits = null;
+	public List<Magasin> getMagasins() {
+		List<Magasin> listeMagasins = null;
 		
 		try
 		{
 			FonctionnalitesUtiles.session.beginTransaction();
 			
-			listeProduits = FonctionnalitesUtiles.session.createQuery("from Produit", Produit.class).list();
+			listeMagasins = FonctionnalitesUtiles.session.createQuery("from Magasin", Magasin.class).list();
 			
 			FonctionnalitesUtiles.session.getTransaction().commit();			
 		}
@@ -27,17 +27,17 @@ public class ProduitServiceImpl implements IProduitService {
 			FonctionnalitesUtiles.session.getTransaction().rollback();
 		}
 		
-		return listeProduits;
+		return listeMagasins;
 	}
 
 	@Override
-	public void saveProduit(Produit p) {
+	public void saveMagasin(Magasin m) {
 		try
 		{
 			FonctionnalitesUtiles.session.beginTransaction();
 			
 			
-			FonctionnalitesUtiles.session.save(p);
+			FonctionnalitesUtiles.session.save(m);
 			
 			FonctionnalitesUtiles.session.getTransaction().commit();			
 		}
@@ -49,13 +49,13 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public Produit getProduit(int id) {
-		Produit prod = null;
+	public Magasin getMagasin(int id) {
+		Magasin prod = null;
 		try
 		{
 			FonctionnalitesUtiles.session.beginTransaction();
 			
-			prod = FonctionnalitesUtiles.session.get(Produit.class, id);
+			prod = FonctionnalitesUtiles.session.get(Magasin.class, id);
 			
 			FonctionnalitesUtiles.session.getTransaction().commit();			
 		}
@@ -67,12 +67,12 @@ public class ProduitServiceImpl implements IProduitService {
 	}
 
 	@Override
-	public void deleteProduit(int id) {
+	public void deleteMagasin(int id) {
 		try
 		{
 			FonctionnalitesUtiles.session.beginTransaction();
 			
-			FonctionnalitesUtiles.session.delete(FonctionnalitesUtiles.session.get(Produit.class, id));
+			FonctionnalitesUtiles.session.delete(FonctionnalitesUtiles.session.get(Magasin.class, id));
 			
 			FonctionnalitesUtiles.session.getTransaction().commit();			
 		}
@@ -82,7 +82,5 @@ public class ProduitServiceImpl implements IProduitService {
 		}
 		
 	}
-	
-	
 
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Les produits</title>
+<title>Les magasins</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -16,23 +16,23 @@
 	  <div class="row">
 	    <div class="col">Id</div>
 	    <div class="col">Nom</div>
-	    <div class="col">Référence</div>
-	    <div class="col">Prix</div>
-	    <div class="col">Poids</div>
+	    <div class="col">Adresse</div>
+	    <div class="col">CP</div>
+	    <div class="col">Ville</div>
 	    <div class="col">Action</div>
 	  </div>
 	  
-	  <c:forEach var="prod" items="${ listeP }">
+	  <c:forEach var="mag" items="${ listeM }">
 		  <div class="row">
 		  	<div class="col">
-		  		<a href="getProduit/${ prod.getId() }">${ prod.getId() }</a>
+		  		<a href="getMagasin/${ mag.getId() }">${ mag.getId() }</a>
 		  	</div>
-		  	<div class="col"><c:out value="${ prod.getNom() }"></c:out></div>
-		    <div class="col"><c:out value="${ prod.getReference() }"></c:out></div>
-		    <div class="col"><c:out value="${ prod.getPrix() }"></c:out></div>
-		    <div class="col"><c:out value="${ prod.getPoids() }"></c:out></div>
+		  	<div class="col"><c:out value="${ mag.getNom() }"></c:out></div>
+		    <div class="col"><c:out value="${ mag.getAdresse() }"></c:out></div>
+		    <div class="col"><c:out value="${ mag.getCp() }"></c:out></div>
+		    <div class="col"><c:out value="${ mag.getVille() }"></c:out></div>
 		    <div class="col">
-		    	<a href="deleteProduit/${ prod.getId() }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
+		    	<a href="deleteMagasin/${ mag.getId() }"> <button type="button" class="btn btn-outline-danger">Supprimer</button></a>
 		    </div>
 		  </div>
 	  </c:forEach>

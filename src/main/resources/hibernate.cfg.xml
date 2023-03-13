@@ -13,6 +13,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         
         <mapping class="com.inti.SpringTest.model.Produit" />
+        <mapping class="com.inti.SpringTest.model.Magasin" />
         
     </session-factory>
 </hibernate-configuration>

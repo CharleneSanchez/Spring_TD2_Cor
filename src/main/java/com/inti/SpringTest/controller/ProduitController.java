@@ -1,5 +1,7 @@
 package com.inti.SpringTest.controller;
 
+import java.net.http.HttpRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +49,7 @@ public class ProduitController {
 	{
 		ips.saveProduit(p);
 		
-		return "redirect:/produit/ajout";
+		return "redirect:/produit/afficherProduits";
 	}
 	
 	@GetMapping("afficherProduits")
@@ -63,6 +65,14 @@ public class ProduitController {
 	{
 		ips.deleteProduit(id);
 		return "redirect:/produit/afficherProduits";
+	}
+	
+	@GetMapping("getProduit/{id}")
+	public String getProduit(@PathVariable int id, Model m)
+	{
+		m.addAttribute("produit", ips.getProduit(id));
+		
+		return "updateProduit";
 	}
 
 }
