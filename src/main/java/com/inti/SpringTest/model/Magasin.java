@@ -1,9 +1,14 @@
 package com.inti.SpringTest.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +22,12 @@ public class Magasin {
 	private String adresse;
 	private String cp;
 	private String ville;
+	
+	@ManyToMany
+	@JoinTable(name = "Magasin_Produit",
+				joinColumns = @JoinColumn(name = "idMagasin"),
+				inverseJoinColumns = @JoinColumn(name = "idProduit"))
+	List<Produit> listeProduit;
 	
 	public Magasin() {
 		super();
@@ -68,6 +79,14 @@ public class Magasin {
 
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
 	}
 
 	@Override

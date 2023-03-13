@@ -83,4 +83,22 @@ public class MagasinServiceImpl implements IMagasinService {
 		
 	}
 
+	@Override
+	public Magasin updateMagasin(Magasin m) {
+		try
+		{
+			FonctionnalitesUtiles.session.beginTransaction();
+			
+			FonctionnalitesUtiles.session.update(m);
+			
+			FonctionnalitesUtiles.session.getTransaction().commit();			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			FonctionnalitesUtiles.session.getTransaction().rollback();
+		}
+		
+		return m;
+	}
+
 }
